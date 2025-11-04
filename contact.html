@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Technology Web</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* --- Styles spécifiques à la page contact --- */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .contact-form label {
+      font-weight: 600;
+      color: #0044cc;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px 15px;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      outline: none;
+      transition: border 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #6a5acd;
+      box-shadow: 0 0 10px rgba(106,90,205,0.2);
+    }
+
+    /* --- Bouton animé --- */
+    .contact-form button {
+      background: linear-gradient(135deg, #0044cc, #6a5acd);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 14px 0;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .contact-form button:hover {
+      background: linear-gradient(135deg, #6a5acd, #0044cc);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    .confirmation {
+      margin-top: 20px;
+      background: #e6ffed;
+      color: #0a8f35;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 500;
+      display: none;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="overlay">
+      <h1>Contactez-nous</h1>
+      <p>Université M’hamed Bougara de Boumerdès — Faculté de Technologie</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="html.html">HTML</a>
+    <a href="css.html">CSS</a>
+    <a href="js.html">JavaScript</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+
+  <main>
+    <section class="intro">
+      <h2>📧 Envoyez-nous un message</h2>
+      <p>Vous pouvez nous contacter pour toute question ou suggestion concernant le site ou les cours.</p>
+
+      <form class="contact-form" id="contactForm">
+        <label for="name">Nom complet :</label>
+        <input type="text" id="name" name="name" placeholder="Votre nom" required>
+
+        <label for="email">Adresse e-mail :</label>
+        <input type="email" id="email" name="email" placeholder="exemple@email.com" required>
+
+        <label for="message">Message :</label>
+        <textarea id="message" name="message" rows="5" placeholder="Écrivez votre message ici..." required></textarea>
+
+        <button type="submit">🚀 Envoyer</button>
+      </form>
+
+      <div class="confirmation" id="confirmationMessage">
+        ✅ Merci ! Votre message a bien été envoyé.
+      </div>
+    </section>
+
+    <section class="intro">
+      <h2>📍 Localisation</h2>
+      <p>Université M’hamed Bougara — Faculté de Technologie, Boumerdès, Algérie</p>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.6482989350043!2d3.4819!3d36.7529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fdbbe8dbe3a71%3A0x3d50f3581c8f21b8!2sUniversité%20M&#39;hamed%20Bougara%20Boumerdès!5e0!3m2!1sfr!2sdz!4v1698103045623"
+          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Université M'hamed Bougara Boumerdès — Faculté de Technologie | Réalisé par Hadjer Attou & Irinislimane Roumaissa</p>
+  </footer>
+
+  <script>
+    // --- Script de confirmation d’envoi ---
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // empêche le rechargement
+      document.getElementById('confirmationMessage').style.display = 'block';
+      this.reset(); // réinitialise le formulaire
+    });
+  </script>
+</body>
+</html>
