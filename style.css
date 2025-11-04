@@ -14,8 +14,8 @@ body {
 
 /* --- Header --- */
 header {
-  background: linear-gradient(135deg, #355cde, #6a9cff);
-  color: #fff;
+  background: linear-gradient(135deg, #fa89c7, #da88eb);
+  color: #000000;
   text-align: center;
   padding: 2.5rem 1rem;
   border-radius: 0 0 20px 20px;
@@ -47,7 +47,7 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: #355cde;
+  color: #000000;
   font-weight: 600;
   padding: 8px 16px;
   border-radius: 10px;
@@ -56,7 +56,7 @@ nav a {
 
 nav a:hover,
 nav a.active {
-  background: #355cde;
+  background: #ac077a;
   color: #fff;
 }
 
@@ -69,20 +69,22 @@ main {
 
 /* --- Sections --- */
 .content-box {
-  background: #fff;
+  background: #f1d1ec;
   border-radius: 20px;
   padding: 1.8rem;
   margin-bottom: 2rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  border-left: 6px solid #ac077a ; /* modern vertical border */
 }
 
 .content-box:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 
 .content-box h2 {
-  color: #355cde;
+  color: #44023b;
   margin-bottom: 1rem;
 }
 
@@ -94,11 +96,30 @@ main {
 
 .example {
   background: #f4f7ff;
-  border-left: 4px solid #355cde;
+  border-left: 4px solid #af87b3;
   padding: 1rem;
   border-radius: 10px;
   font-family: monospace;
   overflow-x: auto;
+}
+
+/* --- PDF links with icon --- */
+.pdf-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #080808;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(92, 22, 86, 0.1);
+  transition: all 0.3s ease;
+}
+
+.pdf-icon:hover {
+  background: rgba(201, 118, 226, 0.2);
+  transform: scale(1.05);
 }
 
 /* --- Auteurs & logos (index.html) --- */
@@ -111,7 +132,7 @@ main {
 }
 
 .auteur h3 {
-  color: #355cde;
+  color: #713c7e;
   margin-bottom: 0.5rem;
 }
 
@@ -142,7 +163,7 @@ main {
 footer {
   text-align: center;
   padding: 1.2rem;
-  background: #355cde;
+  background: #612d66;
   color: #fff;
   border-radius: 20px 20px 0 0;
   margin-top: 2rem;
@@ -160,7 +181,7 @@ footer {
 }
 
 .welcome-section h2 {
-  color: #0044cc;
+  color: #520c37;
   font-size: 32px;
   margin-bottom: 15px;
   font-weight: 700;
@@ -168,7 +189,7 @@ footer {
 
 .welcome-section p {
   font-size: 18px;
-  color: #333;
+  color: #1f1d1d;
   margin-bottom: 25px;
 }
 
@@ -181,7 +202,7 @@ footer {
 }
 
 .welcome-names .title {
-  color: #6a5acd;
+  color: #020202;
   font-weight: 600;
   font-size: 20px;
   margin-bottom: 8px;
@@ -210,56 +231,25 @@ footer {
   transform: scale(1.1);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-/* ====== ANIMATIONS MODERNES (Fade-in / Slide) ====== */
-
-/* Animation d'apparition douce */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Appliquer à toutes les sections principales */
-.intro, header, nav, footer {
-  opacity: 0;
-  animation: fadeIn 1.2s ease forwards;
-}
-
-/* Délais progressifs pour effet fluide */
-header {
-  animation-delay: 0.1s;
-}
-nav {
-  animation-delay: 0.3s;
-}
-.intro {
-  animation-delay: 0.5s;
-}
-footer {
-  animation-delay: 0.8s;
-}
-
-/* Animation spéciale pour les cartes et boutons */
-.card, .cours-item, .contact-form button {
-  animation: fadeIn 1s ease forwards;
-  animation-delay: 0.6s;
-  opacity: 0;
+/* ====== Cards modern style ====== */
+.card {
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.7);
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 20px 30px;
+  width: 350px;
+  text-align: center;
+  border-left: 6px solid #563558;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-6px) scale(1.02);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.18);
 }
 
-/* Ajout d’un effet “pulse” discret sur le bouton envoyer */
+/* Contact button pulse effect */
 .contact-form button:hover {
   animation: pulse 1s infinite alternate;
 }
@@ -274,3 +264,19 @@ footer {
     box-shadow: 0 0 20px rgba(106,90,205,0.5);
   }
 }
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.intro, header, nav, footer {
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+header { animation-delay: 0.1s; }
+nav { animation-delay: 0.3s; }
+.intro { animation-delay: 0.5s; }
+footer { animation-delay: 0.8s; }
