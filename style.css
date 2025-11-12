@@ -1,4 +1,4 @@
-/* --- Reset & base --- */
+
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +12,6 @@ body {
   line-height: 1.6;
 }
 
-/* --- Header --- */
 header {
   background: linear-gradient(135deg, #fa89c7, #da88eb);
   color: #000000;
@@ -67,7 +66,7 @@ main {
   padding: 0 1rem;
 }
 
-/* --- Sections --- */
+
 .content-box {
   background: #f1d1ec;
   border-radius: 20px;
@@ -75,7 +74,7 @@ main {
   margin-bottom: 2rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.3s ease;
-  border-left: 6px solid #ac077a ; /* modern vertical border */
+  border-left: 6px solid #ac077a ; 
 }
 
 .content-box:hover {
@@ -103,7 +102,7 @@ main {
   overflow-x: auto;
 }
 
-/* --- PDF links with icon --- */
+
 .pdf-icon {
   display: inline-flex;
   align-items: center;
@@ -122,7 +121,7 @@ main {
   transform: scale(1.05);
 }
 
-/* --- Auteurs & logos (index.html) --- */
+
 .auteur {
   text-align: center;
   background: #fff;
@@ -231,7 +230,7 @@ footer {
   transform: scale(1.1);
 }
 
-/* ====== Cards modern style ====== */
+
 .card {
   backdrop-filter: blur(12px);
   background: rgba(255,255,255,0.7);
@@ -249,7 +248,7 @@ footer {
   box-shadow: 0 15px 35px rgba(0,0,0,0.18);
 }
 
-/* Contact button pulse effect */
+
 .contact-form button:hover {
   animation: pulse 1s infinite alternate;
 }
@@ -265,7 +264,7 @@ footer {
   }
 }
 
-/* --- Animations --- */
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
@@ -280,3 +279,52 @@ header { animation-delay: 0.1s; }
 nav { animation-delay: 0.3s; }
 .intro { animation-delay: 0.5s; }
 footer { animation-delay: 0.8s; }
+
+/* Effet header compact quand on descend */
+header.scrolled {
+  padding: 60px 20px;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #5a1144, #9c4a88);
+}
+
+/* Apparition douce au défilement */
+.intro, .welcome-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+
+.intro.visible, .welcome-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.scroll-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
+  background: #355cde;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.scroll-top-btn:hover {
+  transform: scale(1.15);
+}
+
+.appear {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 1s ease;
+}
+
+.content-box, .intro, .cours-section {
+  opacity: 0;
+  transform: translateY(40px);
+}

@@ -6,7 +6,7 @@
   <title>Contact - Technology Web</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* --- Styles spécifiques à la page contact --- */
+    
     .contact-form {
       display: flex;
       flex-direction: column;
@@ -36,7 +36,7 @@
       box-shadow: 0 0 10px rgba(106,90,205,0.2);
     }
 
-    /* --- Bouton animé --- */
+   
     .contact-form button {
       background: linear-gradient(135deg, #5a1144, #9c4a88);
       color: white;
@@ -125,12 +125,13 @@
   </footer>
 
   <script>
-    // --- Script de confirmation d’envoi ---
+    
     document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // empêche le rechargement
+      e.preventDefault(); 
       document.getElementById('confirmationMessage').style.display = 'block';
-      this.reset(); // réinitialise le formulaire
+      this.reset(); 
     });
   </script>
+  <script src="script.js"></script>
 </body>
 </html>
