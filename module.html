@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module - M'Hamed Bougara University</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>M'Hamed Bougara University — Faculty of Technology</h1>
+    <p class="small">Master 2 — Networks & Telecommunications</p>
+    <p class="small muted" id="userInfo2"></p>
+  </header>
+
+  <main class="modules-wrap">
+    <div class="module-header">
+      <h2 id="moduleTitle"></h2>
+      <div class="small muted" id="moduleKey"></div>
+    </div>
+
+    <div class="module-content" id="moduleContent"></div>
+
+    <div id="pdfViewer" style="width:100%; height:600px; margin-top:20px;"></div>
+  </main>
+
+<script>
+function qs(name){ 
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
+
+const moduleKey = qs('module') || 'web-tech';
+const moduleTitle = qs('title') ? decodeURIComponent(qs('title')) : 'Module';
+
+const userFull = localStorage.getItem('user_fullname');
+const userInfo2 = document.getElementById('userInfo2');
+if(userInfo2) userInfo2.textContent = userFull ? 'Logged in as: ' + userFull : '';
+
+document.getElementById('moduleTitle').textContent = moduleTitle;
+document.getElementById('moduleKey').textContent = 'Module key: ' + moduleKey;
+
+
+const cardsData = [
+  {type:'Cours', icon:'📖', file:`${moduleKey}-course.pdf`},
+  {type:'TD', icon:'📝', file:`${moduleKey}-td.pdf`},
+  {type:'TP', icon:'🔧', file:`${moduleKey}-tp.pdf`}
+];
+
+const contentEl = document.getElementById('moduleContent');
+
+function openPDF(file){
+  const viewer = document.getElementById('pdfViewer');
+  viewer.innerHTML = `<iframe src="${file}" width="100%" height="600px"></iframe>`;
+}
+
+cardsData.forEach(c=>{
+  const div = document.createElement('div');
+  div.className = 'module-box';
+
+  let color = '#afd9f5ff'; // Cours
+  if(c.type === 'TD') color = '#d091d6ff';
+  if(c.type === 'TP') color = '#eea1dbff';
+  div.style.backgroundColor = color;
+
+  div.innerHTML = `
+    <div class="box-icon">${c.icon}</div>
+    <strong>${c.type}</strong>
+    <a href="#" onclick="openPDF('pdfs/${c.file}'); return false;">Open ${c.type}</a>
+  `;
+  contentEl.appendChild(div);
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

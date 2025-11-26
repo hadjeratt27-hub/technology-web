@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Modules - University M'Hamed Bougara University</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>M'Hamed Bougara University — Faculty of Technology</h1>
+    <p class="small">Master 2 — Networks & Telecommunications</p>
+    <p class="small muted" id="userInfo"></p>
+  </header>
+
+  <main class="modules-wrap">
+    <h2 class="center">Available Modules</h2>
+
+
+    <div class="modules-grid" id="modulesGrid">
+      
+    </div>
+  </main>
+
+<script src="script.js"></script>
+<script>
+
+const MODULES = [
+  {key:'web-tech', name:'Web Technology', desc:'HTML, CSS, JavaScript & web basics'},
+  {key:'cryptography', name:'Cryptography', desc:'Encryption, protocols and security'},
+  {key:'wireless', name:'Wireless Networks', desc:'WiFi, LTE, wireless concepts'},
+  {key:'video-audio', name:'Video & Audio', desc:'Multimedia processing & streaming'},
+  {key:'field-net', name:'Field Networks', desc:'On-site network deployment & cabling'},
+  {key:'iot', name:'IoT', desc:'Internet of Things & sensor networks'},
+  {key:'ai', name:'AI', desc:'Intro to Artificial Intelligence & ML'}
+];
+
+const grid = document.getElementById('modulesGrid');
+MODULES.forEach(m=>{
+  const div = document.createElement('div');
+  div.className='module-card';
+  div.innerHTML = `<h3>${m.name}</h3><p class="small">${m.desc}</p>`;
+  
+  
+  div.addEventListener('click', ()=> {
+    window.location.href = `module.html?module=${m.key}&title=${encodeURIComponent(m.name)}`;
+  });
+  
+  grid.appendChild(div);
+});
+
+
+const user = localStorage.getItem('user_fullname');
+const group = localStorage.getItem('user_group');
+const uel = document.getElementById('userInfo');
+if(user) uel.textContent = `Logged in as: ${user} — Group: ${group || '-'}`;
+</script>
+</body>
+</html>

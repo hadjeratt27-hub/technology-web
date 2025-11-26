@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - University M'Hamed Bougara University</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+
+  <div class="login-box" role="form" aria-labelledby="loginTitle">
+    <h2 id="loginTitle">Login Form</h2>
+
+    <form id="loginForm" autocomplete="off">
+      <label for="fullname">Full Name</label>
+      <input id="fullname" name="fullname" type="text" required>
+
+      <label for="group">Group</label>
+      <input id="group" name="group" type="text" required>
+
+      <label for="password">Password 🔑</label>
+      <input id="password" name="password" type="password" required>
+
+      <button type="submit" class="login-btn">Login</button>
+      <p id="msg" style="color:red; margin-top:10px;"></p> 
+    </form>
+  </div>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const full = document.getElementById('fullname').value.trim();
+  const group = document.getElementById('group').value.trim();
+  const password = document.getElementById('password').value;
+  const msg = document.getElementById('msg');
+
+  const correctPassword = "hadjer2025";
+
+  if(!full || !group){ 
+    alert('Please enter name and group'); 
+    return; 
+  }
+
+  if(password !== correctPassword){
+    msg.textContent = "Mot de passe incorrect !";
+    return;
+  }
+
+  localStorage.setItem('user_fullname', full);
+  localStorage.setItem('user_group', group);
+
+  window.location.href = 'modules.html';
+});
+</script>
+</body>
+</html>
+
